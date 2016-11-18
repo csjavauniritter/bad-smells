@@ -9,7 +9,7 @@ public class JogadorTest {
 	
 	@Test
 	public void testarJogadorNulo() {
-		Jogador jogador = new Jogador();
+		Jogador jogador = new Jogador("Bob");
 		
 		assertNotNull(jogador);
 	}
