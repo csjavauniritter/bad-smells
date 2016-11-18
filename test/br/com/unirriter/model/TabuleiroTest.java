@@ -1,5 +1,6 @@
 package br.com.unirriter.model;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -25,8 +26,27 @@ public class TabuleiroTest {
 		
 		Tabuleiro tabuleiro = new Tabuleiro(jogador1, jogador2);
 		assertTrue(tabuleiro.efetuarJogada(1,2));
+	}
+	
+	@Test
+    public void testarPosicaoInvalida() {
 		
+		Jogador jogador1 = new Jogador("Leo");
+		Jogador jogador2 = new Jogador("Mario");
 		
+		Tabuleiro tabuleiro = new Tabuleiro(jogador1, jogador2);
+		assertFalse(tabuleiro.efetuarJogada(4,2));
+	}
+	
+	@Test
+    public void testarPosicaoJogada() {
+		
+		Jogador jogador1 = new Jogador("Leo");
+		Jogador jogador2 = new Jogador("Mario");
+		
+		Tabuleiro tabuleiro = new Tabuleiro(jogador1, jogador2);
+		tabuleiro.efetuarJogada(1,1);
+		assertFalse(tabuleiro.efetuarJogada(1,1));
 	}
 	
 	
