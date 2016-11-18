@@ -15,11 +15,11 @@ public class Tabuleiro {
 	}
 
 	public boolean efetuarJogada(int i, int j) {
-		if (i > 3 || i < 0 || j > 3 || j < 0) {
+		if (verificarJogadaInvalida(i, j)) {
 			return false;
 		}
 
-		if (posicoes[i][j] != 0) {
+		if (verificarJogadaRepetida(i, j)) {
 			return false;
 		}
 
@@ -35,6 +35,14 @@ public class Tabuleiro {
 		posicoes[i][j] = xOuBolinha;
 
 		return true;
+	}
+	
+	private boolean verificarJogadaInvalida(int x, int y) {
+		return  ((x > 3 || y < 0) || (y > 3 || y < 0));
+	}
+	
+	private boolean verificarJogadaRepetida(int x, int y) {
+		return posicoes[x][y] != 0;
 	}
 
 	public boolean fimJogo(int i, int j) {
