@@ -9,4 +9,8 @@ public class Tabuleiro {
 		this.jogador1 = jogador1;
 		this.jogador2 = jogador2;
 	}
+
+	public boolean efetuarJogada(int i, int j) {
+		return true;
+	}
 }
