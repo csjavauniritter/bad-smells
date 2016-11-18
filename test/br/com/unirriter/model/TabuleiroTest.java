@@ -49,8 +49,18 @@ public class TabuleiroTest {
 		assertFalse(tabuleiro.efetuarJogada(1,1));
 	}
 	
-	
-	
+	@Test
+    public void testarJogador1JaGanhou() {
+		
+		Jogador jogador1 = new Jogador("Leo");
+		Jogador jogador2 = new Jogador("Mario");
+		
+		Tabuleiro tabuleiro = new Tabuleiro(jogador1, jogador2);
+		tabuleiro.efetuarJogada(0,0);
+		tabuleiro.efetuarJogada(1,1);
+		
+		assertFalse(tabuleiro.fimJogo(1,1));
+	}
 }
 
 
