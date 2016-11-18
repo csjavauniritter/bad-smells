@@ -45,7 +45,21 @@ public class Tabuleiro {
 		return posicoes[x][y] != 0;
 	}
 
-	public boolean fimJogo(int i, int j) {
-		return false;
+	public boolean fimJogo() {
+		return this.verificaPosicaoHorizontal();
 	} 
+	
+	private boolean verificaPosicaoHorizontal() {
+		for (int x = 0; x < 3; x++) {
+			if (posicoes[x][0] == 1 && posicoes[x][1] == 1 && posicoes[x][2] == 1) {
+				return true;
+			}
+			
+			if (posicoes[x][0] == 2 && posicoes[x][1] == 2 && posicoes[x][2] == 2) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 }
