@@ -46,7 +46,8 @@ public class Tabuleiro {
 	}
 
 	public boolean fimJogo() {
-		return this.verificaPosicaoHorizontal();
+		return this.verificaPosicaoHorizontal() || 
+				this.verificaPosicaoVertical() || this.verificarPosicaoDiagonal1();
 	} 
 	
 	private boolean verificaPosicaoHorizontal() {
@@ -59,7 +60,29 @@ public class Tabuleiro {
 				return true;
 			}
 		}
-		
+		return false;
+	}
+	
+	private boolean verificaPosicaoVertical() {
+		for (int y = 0; y < 3; y++) {
+			if (posicoes[0][y] == 1 && posicoes[1][y] == 1 && posicoes[2][y] == 1) {
+				return true;
+			}
+			
+			if (posicoes[0][y] == 2 && posicoes[1][y] == 2 && posicoes[2][y] == 2) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private boolean verificarPosicaoDiagonal1() {
+		if (posicoes[0][0] == 1 && posicoes[1][1] == 1 && posicoes[2][2] == 1) {
+			return true;
+		}
+		if (posicoes[0][0] == 2 && posicoes[1][1] == 2 && posicoes[2][2] == 2) {
+			return true;
+		}
 		return false;
 	}
 }
