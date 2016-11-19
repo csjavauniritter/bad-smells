@@ -5,6 +5,8 @@ public class Tabuleiro {
 	private Jogador jogador1;
 	private Jogador jogador2;
 	private Jogador jogadorAtivo;
+	private Jogador ganhador;
+	private int numeroJogadas;
 
 	private int[][] posicoes = new int[3][3];
 
@@ -40,6 +42,7 @@ public class Tabuleiro {
 
 		posicoes[i][j] = xOuBolinha;
 
+		numeroJogadas++;
 		return true;
 	}
 	
@@ -55,15 +58,21 @@ public class Tabuleiro {
 		return this.verificaPosicaoHorizontal() || 
 				this.verificaPosicaoVertical() || this.verificarPosicaoDiagonal1() 
 				|| this.verificarPosicaoDiagonal2();
-	} 
+	}
+	
+	public Jogador quemGanhou() {
+		return ganhador;
+	}
 	
 	private boolean verificaPosicaoHorizontal() {
 		for (int x = 0; x < 3; x++) {
 			if (posicoes[x][0] == 1 && posicoes[x][1] == 1 && posicoes[x][2] == 1) {
+				ganhador = jogador1;
 				return true;
 			}
 			
 			if (posicoes[x][0] == 2 && posicoes[x][1] == 2 && posicoes[x][2] == 2) {
+				ganhador = jogador2;
 				return true;
 			}
 		}
@@ -73,10 +82,12 @@ public class Tabuleiro {
 	private boolean verificaPosicaoVertical() {
 		for (int y = 0; y < 3; y++) {
 			if (posicoes[0][y] == 1 && posicoes[1][y] == 1 && posicoes[2][y] == 1) {
+				ganhador = jogador1;
 				return true;
 			}
 			
 			if (posicoes[0][y] == 2 && posicoes[1][y] == 2 && posicoes[2][y] == 2) {
+				ganhador = jogador2;
 				return true;
 			}
 		}
@@ -85,9 +96,11 @@ public class Tabuleiro {
 	
 	private boolean verificarPosicaoDiagonal1() {
 		if (posicoes[0][0] == 1 && posicoes[1][1] == 1 && posicoes[2][2] == 1) {
+			ganhador = jogador1;
 			return true;
 		}
 		if (posicoes[0][0] == 2 && posicoes[1][1] == 2 && posicoes[2][2] == 2) {
+			ganhador = jogador2;
 			return true;
 		}
 		return false;
@@ -95,9 +108,11 @@ public class Tabuleiro {
 	
 	private boolean verificarPosicaoDiagonal2() {
 		if (posicoes[0][2] == 1 && posicoes[1][2] == 1 && posicoes[2][0] == 1) {
+			ganhador = jogador1;
 			return true;
 		}
 		if (posicoes[0][2] == 2 && posicoes[1][2] == 2 && posicoes[2][0] == 2) {
+			ganhador = jogador2;
 			return true;
 		}
 		return false;
